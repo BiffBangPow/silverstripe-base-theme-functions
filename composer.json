@@ -1,0 +1,23 @@
+{
+  "name": "biffbangpow/silverstripe-base-theme-functions",
+  "description": "Functions for the base theme",
+  "type": "silverstripe-vendormodule",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Tim Burt",
+      "email": "tim@biffbangpow.com"
+    }
+  ],
+  "require": {
+    "silverstripe/vendor-plugin": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "BiffBangPow\\Theme\\BaseTheme\\": "src/"
+    }
+  },
+  "extra": {
+  }
+}
