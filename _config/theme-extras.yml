@@ -8,3 +8,15 @@ SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
 
 Bummzack\SilverStripeEmogrify\EmogrifierPlugin:
   css_file: 'themes/silverstripe-base-theme/client/dist/css/email_styles.css'
+
+PageController:
+  extensions:
+    - BiffBangPow\Theme\BaseTheme\Extension\PageControllerExtension
+
+Page:
+  extensions:
+    - BiffBangPow\Theme\BaseTheme\Extension\PageExtension
+
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - BiffBangPow\Theme\BaseTheme\Extension\SiteConfigExtension
