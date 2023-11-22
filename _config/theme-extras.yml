@@ -20,3 +20,7 @@ Page:
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - BiffBangPow\Theme\BaseTheme\Extension\SiteConfigExtension
+
+BiffBangPow\Element\TextAndVideoElement:
+  controller_class: BiffBangPow\Theme\BaseTheme\Control\TextAndVideoElementController
+

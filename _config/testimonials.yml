@@ -1,0 +1,6 @@
+---
+Name:  testimonials-element-override
+---
+
+BiffBangPow\Element\TestimonialsElement:
+  include_default_css: false
