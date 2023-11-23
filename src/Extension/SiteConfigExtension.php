@@ -233,9 +233,9 @@ class SiteConfigExtension extends DataExtension
         return [
             'basesize' => $this->owner->BaseFontSize . "px",
             'bodyfamily' => $this->owner->BodyFont,
-            'bodyfamilyname' => $this->fontDefs[$this->owner->BodyFont],
+            'bodyfamilyname' => $this->fontDefs[$this->owner->BodyFont] ?? '',
             'titlefamily' => $this->owner->TitleFont,
-            'titlefamilyname' => $this->fontDefs[$this->owner->TitleFont],
+            'titlefamilyname' => $this->fontDefs[$this->owner->TitleFont] ?? '',
             'h1size' => $this->owner->H1Size,
             'h2size' => $this->owner->H2Size,
             'h3size' => $this->owner->H3Size,

@@ -64,14 +64,16 @@ class PageControllerExtension extends DataExtension
         $siteConfig = $this->owner->getSiteConfig();
         $fonts = $siteConfig->getBrandFonts();
 
-        $bodyFont = $fonts['bodyfamily'];
-        $titleFont = $fonts['titlefamily'];
+        $bodyFont = $fonts['bodyfamily'] ?? false;
+        $titleFont = $fonts['titlefamily'] ?? false;
 
-        $bodyFontDef = ThemeResourceLoader::inst()->findThemedCSS('client/dist/css/fonts/' . $bodyFont);
-        if ($bodyFontDef) {
-            Requirements::css($bodyFontDef);
+        if ($bodyFont) {
+            $bodyFontDef = ThemeResourceLoader::inst()->findThemedCSS('client/dist/css/fonts/' . $bodyFont);
+            if ($bodyFontDef) {
+                Requirements::css($bodyFontDef);
+            }
         }
-        if ($titleFont !== $bodyFont) {
+        if ($titleFont && ($titleFont !== $bodyFont)) {
             $titleFontDef = ThemeResourceLoader::inst()->findThemedCSS('client/dist/css/fonts/' . $titleFont);
             if ($titleFontDef) {
                 Requirements::css($titleFontDef);
