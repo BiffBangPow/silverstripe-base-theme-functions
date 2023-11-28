@@ -120,10 +120,15 @@ class SiteConfigExtension extends DataExtension
         'SocialIconSize' => 40
     ];
     private $fontDefs = [
+        'alegreya' => 'Alegreya',
+        'barlow' => 'Barlow',
         'cinzel' => 'Cinzel',
         'lexend' => 'Lexend',
         'libre-baskerville' => 'Libre Baskerville',
-        'poppins' => 'Poppins'
+        'montserrat' => 'Montserrat',
+        'nunito' => 'Nunito',
+        'poppins' => 'Poppins',
+        'ptsans' => 'PT Sans'
     ];
 
     public function updateCMSFields(FieldList $fields)
