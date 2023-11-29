@@ -2,6 +2,7 @@
 
 namespace BiffBangPow\Theme\BaseTheme\Extension;
 
+use BiffBangPow\Theme\BaseTheme\Helper\PageHelper;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\DropdownField;
@@ -45,6 +46,7 @@ use SilverStripe\View\HTML;
  * @property string $BodyColour
  * @property string $BodyBackground
  * @property int $SocialIconSize
+ * @property int $ButtonHoverPercent
  * @property int $NavLogoID
  * @property int $FooterLogoID
  * @property int $HeroLogoID
@@ -95,7 +97,8 @@ class SiteConfigExtension extends DataExtension
         'BurgerColour' => 'Varchar(8)',
         'BodyColour' => 'Varchar(8)',
         'BodyBackground' => 'Varchar(8)',
-        'SocialIconSize' => 'Int'
+        'SocialIconSize' => 'Int',
+        'ButtonHoverPercent' => 'Int'
     ];
     private static $has_one = [
         'NavLogo' => Image::class,
@@ -117,7 +120,8 @@ class SiteConfigExtension extends DataExtension
         'H6Size' => '1rem',
         'BodyBackground' => '#ffffff',
         'BodyColour' => '#333333',
-        'SocialIconSize' => 40
+        'SocialIconSize' => 40,
+        'ButtonHoverPercent' => -12
     ];
     private $fontDefs = [
         'alegreya' => 'Alegreya',
@@ -207,6 +211,9 @@ class SiteConfigExtension extends DataExtension
                 ->setDescription('Colour of the burger nav (background will be set to the main brand colour)'),
             TextField::create('BodyBackground', 'Body background colour'),
             TextField::create('BodyColour', 'Body text colour'),
+            NumericField::create('ButtonHoverPercent')
+            ->setDescription('Percentage colour change for the hover colour of buttons.  Can be positive or negative to lighten or darken')
+            ->setHTML5(true)
         ]);
     }
 
@@ -225,6 +232,8 @@ class SiteConfigExtension extends DataExtension
 
         //Annoying extras which don't fit the automation
         $colours['socialiconsize'] = $this->owner->SocialIconSize . 'px';
+        $btnpercent = ($this->owner->ButtonHoverPercent) ? $this->owner->ButtonHoverPercent : 0;
+        $colours['brandcolouralt'] = ($this->owner->BrandColour) ? PageHelper::colourBrightness($this->owner->BrandColour, $btnpercent) : '';
 
         return $colours;
     }
