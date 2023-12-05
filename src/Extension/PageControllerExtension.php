@@ -2,9 +2,10 @@
 
 namespace BiffBangPow\Theme\BaseTheme\Extension;
 
-use BiffBangPow\Theme\BaseTheme\Helper\StylesHelper;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
 use SilverStripe\View\ThemeResourceLoader;
@@ -126,6 +127,25 @@ class PageControllerExtension extends DataExtension
     {
         $path = ThemeResourceLoader::inst()->findThemedResource($resource, SSViewer::get_themes());
         return ($path) ? ModuleResourceLoader::singleton()->resolveURL($path) : null;
+    }
+
+    /**
+     * @return DBHTMLText|null
+     */
+    public function getFaviconMarkup(): ?\SilverStripe\ORM\FieldType\DBHTMLText
+    {
+        $output = null;
+
+        $siteConfig = $this->owner->SiteConfig();
+        $favicon = $siteConfig->hasMethod('FavIconImage') && $siteConfig->FavIconImage()->exists() ? $siteConfig->FavIconImage() : false;
+
+        if ($favicon) {
+            $output = ArrayData::create([
+                'Favicon' => $favicon
+            ])->renderWith('Includes/Favicon');
+        }
+
+        return $output;
     }
 
 }

@@ -50,9 +50,11 @@ use SilverStripe\View\HTML;
  * @property int $NavLogoID
  * @property int $FooterLogoID
  * @property int $HeroLogoID
+ * @property int $FavIconImageID
  * @method \SilverStripe\Assets\Image NavLogo()
  * @method \SilverStripe\Assets\Image FooterLogo()
  * @method \SilverStripe\Assets\Image HeroLogo()
+ * @method \SilverStripe\Assets\Image FavIconImage()
  */
 class SiteConfigExtension extends DataExtension
 {
@@ -103,12 +105,14 @@ class SiteConfigExtension extends DataExtension
     private static $has_one = [
         'NavLogo' => Image::class,
         'FooterLogo' => Image::class,
-        'HeroLogo' => Image::class
+        'HeroLogo' => Image::class,
+        'FavIconImage' => Image::class
     ];
     private static $owns = [
         'NavLogo',
         'FooterLogo',
-        'HeroLogo'
+        'HeroLogo',
+        'FavIconImage'
     ];
     private static $defaults = [
         'BaseFontSize' => 16,
@@ -175,7 +179,10 @@ class SiteConfigExtension extends DataExtension
                 ->setDescription('Used in hero elements where required'),
             NumericField::create('SocialIconSize', 'Size of social icons (px)')
                 ->setHTML5(true),
-
+            UploadField::create('FavIconImage', 'Favicon')
+                ->setDescription('Recommended: square (1024x1024 pixels) PNG with transparency')
+                ->setAllowedExtensions(['png', 'jpg', 'jpeg'])
+                ->setFolderName('SiteAssets'),
 
             HeaderField::create('Fonts'),
             DropdownField::create('BodyFont', 'Body Font', $this->fontDefs),

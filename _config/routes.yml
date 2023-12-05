@@ -1,0 +1,9 @@
+---
+Name: faviconroutes
+After:
+  - "#rootroutes"
+  - "#coreroutes"
+---
+SilverStripe\Control\Director:
+  rules:
+    '/favicon.ico': \BiffBangPow\Theme\BaseTheme\Control\FavIconController
