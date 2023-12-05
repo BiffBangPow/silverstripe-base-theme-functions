@@ -6,6 +6,10 @@ use SilverStripe\Control\Controller;
 use SilverStripe\SiteConfig\SiteConfig;
 
 
+/**
+ * Class \BiffBangPow\Theme\BaseTheme\Control\FavIconController
+ *
+ */
 class FavIconController extends Controller
 {
     public function index()

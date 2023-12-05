@@ -24,3 +24,6 @@ SilverStripe\SiteConfig\SiteConfig:
 BiffBangPow\Element\TextAndVideoElement:
   controller_class: BiffBangPow\Theme\BaseTheme\Control\TextAndVideoElementController
 
+BiffBangPow\JobBoard\Control\JobsPageController:
+  extensions:
+    - BiffBangPow\Theme\BaseTheme\Extension\EngagePageControllerExtension

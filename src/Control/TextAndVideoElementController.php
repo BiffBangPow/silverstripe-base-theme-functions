@@ -6,6 +6,10 @@ use DNADesign\Elemental\Controllers\ElementController;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\ThemeResourceLoader;
 
+/**
+ * Class \BiffBangPow\Theme\BaseTheme\Control\TextAndVideoElementController
+ *
+ */
 class TextAndVideoElementController extends ElementController
 {
     public function init()
