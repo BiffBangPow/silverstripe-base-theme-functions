@@ -42,18 +42,29 @@ class PageControllerExtension extends DataExtension
         );
 
 
-        Requirements::javascript(
-            ThemeResourceLoader::inst()->findThemedJavascript('client/dist/javascript/lazyload_config'),
-            ['inline' => true, 'type' => false]
-        );
-        Requirements::javascript(
-            ThemeResourceLoader::inst()->findThemedJavascript('client/dist/javascript/core.js'),
-            ['inline' => true, 'type' => false]
-        );
-        Requirements::javascript(
-            ThemeResourceLoader::inst()->findThemedJavascript('client/dist/javascript/common.js'),
-            ['type' => false, 'async' => true, 'defer' => true]
-        );
+        $llJS = ThemeResourceLoader::inst()->findThemedJavascript('client/dist/javascript/lazyload_config');
+        if ($llJS) {
+            Requirements::javascript(
+                $llJS,
+                ['inline' => true, 'type' => false]
+            );
+        }
+
+        $coreJS = ThemeResourceLoader::inst()->findThemedJavascript('client/dist/javascript/core.js');
+        if ($coreJS) {
+            Requirements::javascript(
+                $coreJS,
+                ['inline' => true, 'type' => false]
+            );
+        }
+
+        $commonJS = ThemeResourceLoader::inst()->findThemedJavascript('client/dist/javascript/common.js');
+        if ($commonJS) {
+            Requirements::javascript(
+                $commonJS,
+                ['type' => false, 'async' => true, 'defer' => true]
+            );
+        }
     }
 
     /**
