@@ -139,6 +139,18 @@ class SiteConfigExtension extends DataExtension
         'ptsans' => 'PT Sans'
     ];
 
+    private $fontFallbacks = [
+        'alegreya' => 'serif',
+        'barlow' => 'sans-serif',
+        'cinzel' => 'serif',
+        'lexend' => 'sans-serif',
+        'libre-baskerville' => 'serif',
+        'montserrat' => 'sans-serif',
+        'nunito' => 'sans-serif',
+        'poppins' => 'sans-serif',
+        'ptsans' => 'sans-serif'
+    ];
+
     public function updateCMSFields(FieldList $fields)
     {
         parent::updateCMSFields($fields);
@@ -219,8 +231,8 @@ class SiteConfigExtension extends DataExtension
             TextField::create('BodyBackground', 'Body background colour'),
             TextField::create('BodyColour', 'Body text colour'),
             NumericField::create('ButtonHoverPercent')
-            ->setDescription('Percentage colour change for the hover colour of buttons.  Can be positive or negative to lighten or darken')
-            ->setHTML5(true)
+                ->setDescription('Percentage colour change for the hover colour of buttons.  Can be positive or negative to lighten or darken')
+                ->setHTML5(true)
         ]);
     }
 
@@ -251,12 +263,23 @@ class SiteConfigExtension extends DataExtension
      */
     public function getBrandFonts()
     {
+        $bodyName = $this->fontDefs[$this->owner->BodyFont] ?? '';
+        $titleName = $this->fontDefs[$this->owner->TitleFont] ?? '';
+
+        if (isset($this->fontFallbacks[$this->owner->BodyFont])) {
+            $bodyName .= ", " . $this->fontFallbacks[$this->owner->BodyFont];
+        }
+
+        if (isset($this->fontFallbacks[$this->owner->TitleFont])) {
+            $titleName .= ", " . $this->fontFallbacks[$this->owner->TitleFont];
+        }
+
         return [
             'basesize' => $this->owner->BaseFontSize . "px",
             'bodyfamily' => $this->owner->BodyFont,
-            'bodyfamilyname' => $this->fontDefs[$this->owner->BodyFont] ?? '',
+            'bodyfamilyname' => $bodyName,
             'titlefamily' => $this->owner->TitleFont,
-            'titlefamilyname' => $this->fontDefs[$this->owner->TitleFont] ?? '',
+            'titlefamilyname' => $titleName,
             'h1size' => $this->owner->H1Size,
             'h2size' => $this->owner->H2Size,
             'h3size' => $this->owner->H3Size,
@@ -270,7 +293,8 @@ class SiteConfigExtension extends DataExtension
      * Get an arbitrary size for the social icon in the template to work with the CSS
      * @return float
      */
-    public function getSocialIconImgSize() {
+    public function getSocialIconImgSize()
+    {
         return $this->owner->SocialIconSize * 0.6;
     }
 }
