@@ -5,6 +5,7 @@ namespace BiffBangPow\Theme\BaseTheme\Extension;
 use BiffBangPow\Theme\BaseTheme\Helper\PageHelper;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
+use SilverStripe\Core\Extensible;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\FieldList;
@@ -58,6 +59,8 @@ use SilverStripe\View\HTML;
  */
 class SiteConfigExtension extends DataExtension
 {
+    use Extensible;
+
     /**
      * @const array COLOURS
      * Contains the data columns we need to output in CSS colour vars
@@ -234,6 +237,8 @@ class SiteConfigExtension extends DataExtension
                 ->setDescription('Percentage colour change for the hover colour of buttons.  Can be positive or negative to lighten or darken')
                 ->setHTML5(true)
         ]);
+
+        $this->extend('updateThemeCMSFields', $fields);
     }
 
     /**
