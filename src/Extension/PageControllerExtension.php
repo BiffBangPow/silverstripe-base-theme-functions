@@ -62,7 +62,7 @@ class PageControllerExtension extends DataExtension
         if ($commonJS) {
             Requirements::javascript(
                 $commonJS,
-                ['type' => false, 'async' => true, 'defer' => true]
+                ['type' => false, 'defer' => true]
             );
         }
     }
