@@ -288,9 +288,9 @@ class SiteConfigExtension extends DataExtension
             'h1size' => $this->owner->H1Size,
             'h2size' => $this->owner->H2Size,
             'h3size' => $this->owner->H3Size,
-            'h4size' => $this->owner->H1Size,
-            'h5size' => $this->owner->H2Size,
-            'h6size' => $this->owner->H3Size
+            'h4size' => $this->owner->H4Size,
+            'h5size' => $this->owner->H5Size,
+            'h6size' => $this->owner->H6Size
         ];
     }
 
