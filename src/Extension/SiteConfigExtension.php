@@ -200,8 +200,8 @@ class SiteConfigExtension extends DataExtension
                 ->setFolderName('SiteAssets'),
 
             HeaderField::create('Fonts'),
-            DropdownField::create('BodyFont', 'Body Font', $this->fontDefs),
-            DropdownField::create('TitleFont', 'Title Font', $this->fontDefs),
+            DropdownField::create('BodyFont', 'Body Font', $this->getFontsList()),
+            DropdownField::create('TitleFont', 'Title Font', $this->getFontsList()),
             NumericField::create('BaseFontSize', 'Base Font Size')
                 ->setDescription('This is normally 16 or greater')
                 ->setHTML5(true),
@@ -268,15 +268,18 @@ class SiteConfigExtension extends DataExtension
      */
     public function getBrandFonts()
     {
-        $bodyName = $this->fontDefs[$this->owner->BodyFont] ?? '';
-        $titleName = $this->fontDefs[$this->owner->TitleFont] ?? '';
+        $fontDefs = $this->getFontsList();
+        $fallbacks = $this->getFontFallbacks();
 
-        if (isset($this->fontFallbacks[$this->owner->BodyFont])) {
-            $bodyName .= ", " . $this->fontFallbacks[$this->owner->BodyFont];
+        $bodyName = $fontDefs[$this->owner->BodyFont] ?? '';
+        $titleName = $fontDefs[$this->owner->TitleFont] ?? '';
+
+        if (isset($this->fallbacks[$this->owner->BodyFont])) {
+            $bodyName .= ", " . $fallbacks[$this->owner->BodyFont];
         }
 
-        if (isset($this->fontFallbacks[$this->owner->TitleFont])) {
-            $titleName .= ", " . $this->fontFallbacks[$this->owner->TitleFont];
+        if (isset($this->fallbacks[$this->owner->TitleFont])) {
+            $titleName .= ", " . $this->fallbacks[$this->owner->TitleFont];
         }
 
         return [
@@ -301,5 +304,17 @@ class SiteConfigExtension extends DataExtension
     public function getSocialIconImgSize()
     {
         return $this->owner->SocialIconSize * 0.6;
+    }
+
+    public function getFontsList() {
+        $brandFonts = $this->fontDefs;
+        $this->extend('updateBrandFonts', $brandFonts);
+        return $brandFonts;
+    }
+
+    public function getFontFallbacks() {
+        $fallbacks = $this->fontFallbacks;
+        $this->extend('updateFontFallbacks', $fallbacks);
+        return $fallbacks;
     }
 }
