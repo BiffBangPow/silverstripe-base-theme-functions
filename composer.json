@@ -10,9 +10,7 @@
       "email": "tim@biffbangpow.com"
     }
   ],
-  "require": {
-    "silverstripe/vendor-plugin": "^1.0"
-  },
+  "require": {},
   "autoload": {
     "psr-4": {
       "BiffBangPow\\Theme\\BaseTheme\\": "src/"

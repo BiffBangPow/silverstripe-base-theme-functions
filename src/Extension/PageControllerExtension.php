@@ -41,15 +41,6 @@ class PageControllerExtension extends DataExtension
             ['push' => true]
         );
 
-
-        $llJS = ThemeResourceLoader::inst()->findThemedJavascript('client/dist/javascript/lazyload_config');
-        if ($llJS) {
-            Requirements::javascript(
-                $llJS,
-                ['inline' => true, 'type' => false]
-            );
-        }
-
         $coreJS = ThemeResourceLoader::inst()->findThemedJavascript('client/dist/javascript/core.js');
         if ($coreJS) {
             Requirements::javascript(
