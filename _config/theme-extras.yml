@@ -27,3 +27,11 @@ BiffBangPow\Element\TextAndVideoElement:
 BiffBangPow\JobBoard\Control\JobsPageController:
   extensions:
     - BiffBangPow\Theme\BaseTheme\Extension\EngagePageControllerExtension
+
+SilverStripe\Blog\Model\BlogController:
+  extensions:
+    - BiffBangPow\Theme\BaseTheme\Extension\BlogControllerExtension
+
+SilverStripe\Blog\Model\BlogPostController:
+  extensions:
+    - BiffBangPow\Theme\BaseTheme\Extension\BlogPostControllerExtension
