@@ -5,6 +5,7 @@ namespace BiffBangPow\Theme\BaseTheme\Extension;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
@@ -64,7 +65,7 @@ class PageControllerExtension extends DataExtension
      */
     private function addFontCSSDefs()
     {
-        $siteConfig = $this->owner->getSiteConfig();
+        $siteConfig = SiteConfig::current_site_config();
         $fonts = $siteConfig->getBrandFonts();
 
         $bodyFont = $fonts['bodyfamily'] ?? false;
@@ -90,7 +91,7 @@ class PageControllerExtension extends DataExtension
      */
     private function addBrandCSS()
     {
-        $siteConfig = $this->owner->getSiteConfig();
+        $siteConfig = SiteConfig::current_site_config();
         $cssVars = $siteConfig->getBrandCSSVars();
         $fonts = $siteConfig->getBrandFonts();
         $brandCSS = ':root { ';
@@ -117,7 +118,7 @@ class PageControllerExtension extends DataExtension
      */
     public function getHasSocial()
     {
-        $conf = $this->owner->getSiteConfig();
+        $siteConfig = SiteConfig::current_site_config();
         return ($conf->SocialLinkedIn || $conf->SocialFacebook || $conf->SocialYouTube || $conf->SocialX || $conf->SocialInstagram);
     }
 
@@ -138,7 +139,7 @@ class PageControllerExtension extends DataExtension
     {
         $output = null;
 
-        $siteConfig = $this->owner->SiteConfig();
+        $siteConfig = SiteConfig::current_site_config();
         $favicon = $siteConfig->hasMethod('FavIconImage') && $siteConfig->FavIconImage()->exists() ? $siteConfig->FavIconImage() : false;
 
         if ($favicon) {
