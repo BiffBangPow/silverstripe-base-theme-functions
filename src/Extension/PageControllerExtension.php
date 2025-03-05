@@ -118,7 +118,7 @@ class PageControllerExtension extends DataExtension
      */
     public function getHasSocial()
     {
-        $siteConfig = SiteConfig::current_site_config();
+        $conf = SiteConfig::current_site_config();
         return ($conf->SocialLinkedIn || $conf->SocialFacebook || $conf->SocialYouTube || $conf->SocialX || $conf->SocialInstagram);
     }
 
