@@ -91,12 +91,12 @@ class SiteConfigExtension extends DataExtension
         'BodyFont' => 'Varchar',
         'TitleFont' => 'Varchar',
         'BaseFontSize' => 'Int',
-        'H1Size' => 'Varchar(15)',
-        'H2Size' => 'Varchar(15)',
-        'H3Size' => 'Varchar(15)',
-        'H4Size' => 'Varchar(15)',
-        'H5Size' => 'Varchar(15)',
-        'H6Size' => 'Varchar(15)',
+        'H1Size' => 'Varchar(100)',
+        'H2Size' => 'Varchar(100)',
+        'H3Size' => 'Varchar(100)',
+        'H4Size' => 'Varchar(100)',
+        'H5Size' => 'Varchar(100)',
+        'H6Size' => 'Varchar(100)',
         'NavbarBackground' => 'Varchar(30)',
         'NavbarBackgroundScrolled' => 'Varchar(30)',
         'BurgerColour' => 'Varchar(8)',
@@ -258,6 +258,8 @@ class SiteConfigExtension extends DataExtension
         $colours['socialiconsize'] = $this->owner->SocialIconSize . 'px';
         $btnpercent = ($this->owner->ButtonHoverPercent) ? $this->owner->ButtonHoverPercent : 0;
         $colours['brandcolouralt'] = ($this->owner->BrandColour) ? PageHelper::colourBrightness($this->owner->BrandColour, $btnpercent) : '';
+
+        $this->extend('updateBrandCSSVars', $colours);
 
         return $colours;
     }
