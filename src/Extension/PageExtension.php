@@ -3,9 +3,9 @@
 namespace BiffBangPow\Theme\BaseTheme\Extension;
 
 use Page;
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataList;
 
 /**
@@ -15,7 +15,7 @@ use SilverStripe\ORM\DataList;
  * @property bool $ShowInMainMenu
  * @property bool $ShowInFooterMenu
  */
-class PageExtension extends DataExtension
+class PageExtension extends Extension
 {
     private static $db = [
         'ShowInMainMenu' => 'Boolean',

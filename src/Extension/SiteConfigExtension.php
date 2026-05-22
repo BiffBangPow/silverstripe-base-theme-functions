@@ -2,6 +2,7 @@
 
 namespace BiffBangPow\Theme\BaseTheme\Extension;
 
+use SilverStripe\Core\Extension;
 use BiffBangPow\Theme\BaseTheme\Helper\PageHelper;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
@@ -14,7 +15,6 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\DataExtension;
 use SilverStripe\View\HTML;
 
 /**
@@ -57,7 +57,7 @@ use SilverStripe\View\HTML;
  * @method \SilverStripe\Assets\Image HeroLogo()
  * @method \SilverStripe\Assets\Image FavIconImage()
  */
-class SiteConfigExtension extends DataExtension
+class SiteConfigExtension extends Extension
 {
     use Extensible;
 

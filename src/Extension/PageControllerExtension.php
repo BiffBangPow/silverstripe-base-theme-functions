@@ -2,8 +2,8 @@
 
 namespace BiffBangPow\Theme\BaseTheme\Extension;
 
+use SilverStripe\Core\Extension;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
-use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\ArrayData;
@@ -16,7 +16,7 @@ use SilverStripe\View\ThemeResourceLoader;
  *
  * @property \PageController|\BiffBangPow\Theme\BaseTheme\Extension\PageControllerExtension $owner
  */
-class PageControllerExtension extends DataExtension
+class PageControllerExtension extends Extension
 {
     public function onBeforeInit()
     {

@@ -2,11 +2,12 @@
 
 namespace BiffBangPow\Theme\BaseTheme\Extension;
 
+use SilverStripe\Core\Extension;
 use DNADesign\Elemental\TopPage\DataExtension;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\ThemeResourceLoader;
 
-class BlogControllerExtension extends DataExtension
+class BlogControllerExtension extends Extension
 {
     public function onAfterInit()
     {

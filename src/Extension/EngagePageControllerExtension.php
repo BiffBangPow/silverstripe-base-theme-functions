@@ -2,6 +2,7 @@
 
 namespace BiffBangPow\Theme\BaseTheme\Extension;
 
+use SilverStripe\Core\Extension;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\ThemeResourceLoader;
@@ -11,7 +12,7 @@ use SilverStripe\View\ThemeResourceLoader;
  *
  * @property \BiffBangPow\JobBoard\Control\JobsPageController|\BiffBangPow\Theme\BaseTheme\Extension\EngagePageControllerExtension $owner
  */
-class EngagePageControllerExtension extends DataExtension
+class EngagePageControllerExtension extends Extension
 {
     public function onAfterinit()
     {
