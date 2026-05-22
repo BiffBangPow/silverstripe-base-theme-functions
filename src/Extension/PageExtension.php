@@ -60,7 +60,6 @@ class PageExtension extends Extension
 
     public function updateCMSFields(FieldList $fields)
     {
-        parent::updateCMSFields($fields);
         $fields->addFieldsToTab('Root.Menus', [
             CheckboxField::create('ShowInMainMenu'),
             CheckboxField::create('ShowInFooterMenu'),
