@@ -156,7 +156,6 @@ class SiteConfigExtension extends Extension
 
     public function updateCMSFields(FieldList $fields)
     {
-        parent::updateCMSFields($fields);
         $fields->addFieldsToTab('Root.Social', [
             TextField::create('SocialLinkedIn', 'LinkedIn'),
             TextField::create('SocialFacebook', 'Facebook'),
